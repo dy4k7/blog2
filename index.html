@@ -1,18 +1,681 @@
-Dhayalan K - Gothic Cloud Architect * { margin: 0; padding: 0; box-sizing: border-box; } <pre><code>body { font-family: 'Crimson Text', serif; background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%); color: #e4e1dc; overflow-x: hidden; position: relative; } header, h1, h2, h3 { font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 1px; } nav { position: fixed; top: 0; left: 0; right: 0; background: rgba(10, 10, 10, 0.9); border-bottom: 1px solid rgba(100, 0, 0, 0.5); padding: 20px 40px; backdrop-filter: blur(10px); z-index: 1000; box-shadow: 0 0 30px rgba(100, 0, 0, 0.4); } .nav-content { display: flex; justify-content: space-between; align-items: center; } .logo { font-size: 1.8em; font-weight: 700; color: #b22222; text-shadow: 0 0 10px #4b0000; } .nav-links { display: flex; gap: 30px; list-style: none; } .nav-links a { color: #b22222; text-decoration: none; transition: color 0.3s ease; font-weight: 600; position: relative; } .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: #b22222; transition: width 0.3s ease; } .nav-links a:hover::after { width: 100%; } header { text-align: center; padding: 180px 20px 120px; background: linear-gradient(180deg, rgba(0,0,0,0.9), rgba(40,0,0,0.7)); } .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 3px solid #b22222; background: radial-gradient(circle, #2b0000, #000); margin: 0 auto 40px; display: flex; align-items: center; justify-content: center; font-size: 70px; box-shadow: 0 0 40px rgba(178,34,34,0.4); } h1 { font-size: 4.5em; color: #f5f3f0; text-shadow: 0 0 20px #2b0000; margin-bottom: 20px; } .tagline { font-size: 1.4em; color: #b22222; font-style: italic; margin-bottom: 50px; } .btn { padding: 15px 40px; border: 2px solid #b22222; background: transparent; color: #e4e1dc; font-family: 'Cinzel', serif; font-weight: 600; text-transform: uppercase; cursor: pointer; border-radius: 4px; transition: all 0.3s ease; } .btn:hover { background: #b22222; color: #fff; box-shadow: 0 0 25px #5c0000; } .content-section { max-width: 1000px; margin: 100px auto; padding: 60px; background: rgba(15, 0, 0, 0.8); border: 1px solid rgba(178,34,34,0.4); border-radius: 8px; box-shadow: 0 0 40px rgba(100,0,0,0.3); } h2 { color: #fff; font-size: 3em; border-bottom: 2px solid #b22222; display: inline-block; margin-bottom: 40px; } p { font-size: 1.2em; color: #d1cbc6; line-height: 1.8; } footer { text-align: center; padding: 60px; color: #7a6b6b; background: #000; border-top: 1px solid rgba(178,34,34,0.3); font-family: 'Cinzel', serif; } footer a { color: #b22222; text-decoration: none; margin: 0 10px; } footer a:hover { text-shadow: 0 0 10px #b22222; } </code></pre> 
-DK
-• About
-• Skills
-• Contact
-✠
-Dhayalan K
-Forging security in the shadows of the cloud.
-Enter the Realm 
-About Me
-I am a seeker of digital resilience — a student of the dark arts of cybersecurity, learning to guard the ethereal realms of the cloud. My path is lit by the faint glow of terminals, the hum of servers, and the discipline of code. With Linux as my forge and Python as my blade, I pursue mastery over systems, architectures, and the unseen specters of security.
-Skills & Focus
-From scripting automation to fortifying infrastructures, I craft solutions with precision. My journey traverses the realms of Linux mastery, Python alchemy, and the arcane mechanics of C and Go — all in pursuit of dominion over cloud security.
-Contact
-Summon me via electronic scroll:
-Email: dhayalankcys007@gmail.com
-GitHub: @dy4k7
-© 2025 Dhayalan K · Crafted in Gothic Shadows
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhayalan K - Gothic Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Text:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+/* === Accessibility & Base Enhancements === */
+:root {
+  --container-max: 72rem;
+  --space: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+:focus { outline: none; }
+:focus-visible { outline: 2px solid #E4D2A8; outline-offset: 3px; border-radius: 6px; }
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: #111;
+  color: #E4D2A8;
+  padding: .75rem 1rem;
+  z-index: 9999;
+}
+.skip-link:focus-visible { left: .5rem; top: .5rem; }
+
+.container { max-width: var(--container-max); margin-inline: auto; padding: clamp(1rem, 2vw, 2.5rem); }
+
+.btn[role="button"], a.btn { text-decoration: none; }
+
+h1 { font-size: clamp(2rem, 3.5vw + 1rem, 4.5rem); line-height: 1.1; }
+h2 { font-size: clamp(1.25rem, 1.5vw + 1rem, 2rem); }
+h3 { font-size: clamp(1.1rem, 1vw + .9rem, 1.5rem); }
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+@container (max-width: 60rem) {
+  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .btn { padding: .6rem 1rem; font-size: 0.95rem; }
+  header { padding: 72px 16px 64px !important; }
+}
+
+.ornament, .fog { pointer-events: none; }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background: #0a0a0a;
+    color: #c9c9c9;
+    overflow-x: hidden;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 50% 50%, rgba(75, 0, 130, 0.15), transparent 40%),
+        radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.1), transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(75, 0, 130, 0.08), transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.fog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(180deg, transparent 0%, rgba(10, 10, 10, 0.3) 50%, rgba(10, 10, 10, 0.6) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ornament {
+    position: fixed;
+    font-size: 120px;
+    color: rgba(75, 0, 130, 0.05);
+    pointer-events: none;
+    z-index: 1;
+    animation: float 20s ease-in-out infinite;
+}
+
+.ornament-1 { top: 10%; left: 5%; animation-delay: 0s; }
+.ornament-2 { top: 60%; right: 8%; animation-delay: 7s; }
+.ornament-3 { bottom: 15%; left: 10%; animation-delay: 14s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px;
+    position: relative;
+    z-index: 2;
+}
+
+header {
+    text-align: center;
+    padding: 120px 20px 100px;
+    animation: fadeInDown 1.5s ease-out;
+    position: relative;
+    border-bottom: 2px solid rgba(138, 43, 226, 0.3);
+    margin-bottom: 80px;
+}
+
+header::after {
+    content: '❦';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    color: #8a2be2;
+    background: #0a0a0a;
+    padding: 0 20px;
+}
+
+.profile-section {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #1a001a 0%, #0a0a0a 100%);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    border: 3px solid #8a2be2;
+    box-shadow: 
+        0 0 50px rgba(138, 43, 226, 0.5),
+        inset 0 0 30px rgba(0, 0, 0, 0.8),
+        0 8px 32px rgba(0, 0, 0, 0.9);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.profile-img::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, #8a2be2 0deg 10deg, transparent 10deg 20deg);
+    opacity: 0;
+    transition: all 0.5s ease;
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+
+.profile-img:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 
+        0 0 80px rgba(138, 43, 226, 0.7),
+        inset 0 0 40px rgba(138, 43, 226, 0.2),
+        0 12px 50px rgba(0, 0, 0, 1);
+    border-color: #9932cc;
+}
+
+.profile-img:hover::before {
+    opacity: 0.3;
+}
+
+h1 {
+    font-family: 'Cinzel', serif;
+    color: #ffffff;
+    font-size: 5em;
+    margin-bottom: 20px;
+    font-weight: 900;
+    letter-spacing: 8px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    text-shadow: 
+        0 0 20px rgba(138, 43, 226, 0.5),
+        0 0 40px rgba(138, 43, 226, 0.3),
+        2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.tagline {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.5em;
+    margin-bottom: 50px;
+    color: #9370db;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-style: italic;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 60px;
+}
+
+.btn {
+    font-family: 'Cinzel', serif;
+    padding: 18px 50px;
+    border: 2px solid #8a2be2;
+    background: transparent;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    color: #8a2be2;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: #8a2be2;
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.btn:hover::before {
+    width: 300%;
+    height: 500%;
+}
+
+.btn-primary {
+    background: #8a2be2;
+    color: #ffffff;
+    border: 2px solid #8a2be2;
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+}
+
+.btn-primary::before {
+    background: #9932cc;
+}
+
+.btn-primary:hover {
+    background: #9932cc;
+    border-color: #9932cc;
+    transform: translateY(-3px);
+    box-shadow: 
+        0 0 40px rgba(138, 43, 226, 0.6),
+        0 10px 30px rgba(0, 0, 0, 0.8);
+}
+
+.btn-secondary:hover {
+    color: #ffffff;
+    border-color: #9932cc;
+}
+
+.content-section {
+    background: linear-gradient(135deg, rgba(20, 0, 20, 0.3) 0%, rgba(10, 10, 10, 0.8) 100%);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(138, 43, 226, 0.3);
+    border-left: 5px solid #8a2be2;
+    padding: 80px 60px;
+    margin: 80px 0;
+    animation: fadeInUp 1s ease-out;
+    position: relative;
+    transition: all 0.4s ease;
+    box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.5),
+        inset 0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+.content-section::before {
+    content: '◆';
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 60px;
+    color: rgba(138, 43, 226, 0.1);
+    font-family: serif;
+}
+
+.content-section:hover {
+    border-color: rgba(138, 43, 226, 0.6);
+    border-left-color: #9932cc;
+    box-shadow: 
+        0 15px 50px rgba(0, 0, 0, 0.7),
+        inset 0 0 80px rgba(138, 43, 226, 0.1);
+}
+
+h2 {
+    font-family: 'Cinzel', serif;
+    color: #ffffff;
+    font-size: 3.5em;
+    margin-bottom: 40px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, #8a2be2, transparent);
+}
+
+h2::before {
+    content: '❦';
+    position: absolute;
+    left: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    color: #8a2be2;
+}
+
+.content-section p {
+    line-height: 2;
+    color: #b8b8b8;
+    font-size: 1.25em;
+    margin-top: 50px;
+    font-weight: 400;
+    text-align: justify;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.skill-card {
+    padding: 50px 40px;
+    background: linear-gradient(135deg, rgba(20, 0, 20, 0.4) 0%, rgba(10, 10, 10, 0.8) 100%);
+    border: 2px solid rgba(138, 43, 226, 0.3);
+    border-top: 3px solid #8a2be2;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(138, 43, 226, 0.1), transparent 70%);
+    opacity: 0;
+    transition: all 0.6s ease;
+    transform: scale(0);
+}
+
+.skill-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: #8a2be2;
+    border-top-color: #9932cc;
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.8),
+        0 0 40px rgba(138, 43, 226, 0.3),
+        inset 0 0 30px rgba(138, 43, 226, 0.1);
+}
+
+.skill-card:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.skill-icon {
+    font-size: 3em;
+    margin-bottom: 25px;
+    display: block;
+    filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5));
+}
+
+.skill-card h3 {
+    font-family: 'Cinzel', serif;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 1.6em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.skill-card p {
+    color: #999;
+    line-height: 1.8;
+    font-size: 1.1em;
+    margin-top: 0;
+    font-weight: 400;
+    text-align: left;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 40px;
+    background: rgba(20, 0, 20, 0.3);
+    border: 2px solid rgba(138, 43, 226, 0.3);
+    border-left: 4px solid #8a2be2;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    color: inherit;
+}
+
+.contact-item:hover {
+    background: rgba(30, 0, 30, 0.5);
+    border-color: #8a2be2;
+    transform: translateX(10px);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.7),
+        -10px 0 30px rgba(138, 43, 226, 0.2);
+}
+
+.contact-icon {
+    font-size: 2.5em;
+    filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.5));
+}
+
+.contact-item strong {
+    font-family: 'Cinzel', serif;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+    font-size: 1em;
+    letter-spacing: 2px;
+}
+
+.contact-item div {
+    color: #999;
+    font-weight: 400;
+    font-size: 1.1em;
+}
+
+footer {
+    text-align: center;
+    padding: 80px 20px;
+    color: #555;
+    margin-top: 100px;
+    border-top: 2px solid rgba(138, 43, 226, 0.3);
+    font-weight: 400;
+    font-size: 1.1em;
+    position: relative;
+}
+
+footer::before {
+    content: '❦';
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    color: #8a2be2;
+    background: #0a0a0a;
+    padding: 0 20px;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3em;
+        letter-spacing: 4px;
+    }
+
+    h2 {
+        font-size: 2.5em;
+        letter-spacing: 3px;
+    }
+
+    h2::before {
+        display: none;
+    }
+
+    .content-section {
+        padding: 50px 30px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .tagline { 
+        font-size: 1rem; 
+    }
+}
+</style>
+</head>
+<body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <div class="fog"></div>
+    <div class="ornament ornament-1" aria-hidden="true">† </div>
+    <div class="ornament ornament-2" aria-hidden="true">✦</div>
+    <div class="ornament ornament-3" aria-hidden="true">♱</div>
+    
+    <div class="container">
+        <header role="banner">
+            <div class="profile-section">
+                <div class="profile-img">☥</div>
+            </div>
+            <h1>Dhayalan K</h1>
+            <p class="tagline">Apprentice of the Cryptic Arts · Seeker of Cloud Dominion</p>
+            <div class="cta-buttons">
+                <a class="btn btn-primary" href="#about" role="button">Enter the Realm</a>
+                <a class="btn btn-secondary" href="#contact" role="button">Forge Connection</a>
+            </div>
+        </header>
+
+        <main id="main" role="main">
+            <div class="content-section" id="about">
+                <h2>The Path</h2>
+                <p>
+                    A devoted apprentice in the mystical realm of cybersecurity, I walk the shadowed path toward 
+                    becoming a Cloud Security Architect. My journey is carved through the foundations of ancient 
+                    security principles, ethereal cloud infrastructure, and the fundamental essence of system arcana. 
+                    I master the dark arts of Linux administration, commune with C to grasp the primordial tongues 
+                    of programming, and wield Python for incantations of automation. My destiny draws me toward Go—the 
+                    sacred language of cloud realms—which shall become my primary instrument for forging resilient, 
+                    scalable guardians of the digital sanctum.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h2>Current Pursuits</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">🗡</div>
+                        <h3>Linux Mastery</h3>
+                        <p>Delving into the depths of system administration, commanding the terminal's ancient powers, wielding bash incantations, and unraveling the sacred mysteries of system internals for dominion over cloud infrastructure.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">🐍</div>
+                        <h3>Python Sorcery</h3>
+                        <p>Crafting automated rituals, weaving scripts for temporal manipulation, and forging ethereal tools to streamline the arcane workflows of security and cloud operations.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">⚔</div>
+                        <h3>C Fundamentals</h3>
+                        <p>Building foundations in the primordial language—understanding memory's abyss, wielding pointers like spectral blades, mastering data structures, and comprehending the core essence that breathes life into modern systems.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon" aria-hidden="true">🌑</div>
+                        <h3>Cloud Security Path</h3>
+                        <p>Traversing ethereal architectures, binding IAM policies with sacred seals, fortifying network barriers, and preparing to master Go—the tongue of cloud-native spirits and infrastructure guardians.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" id="contact">
+                <h2>Communion</h2>
+                <div class="contact-info">
+                    <a href="mailto:dhayalankcys007@gmail.com" class="contact-item">
+                        <span class="contact-icon">📜</span>
+                        <div>
+                            <strong>Grimoire</strong>
+                            dhayalankcys007@gmail.com
+                        </div>
+                    </a>
+                    <a href="https://github.com/dy4k7" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <span class="contact-icon">⚔</span>
+                        <div>
+                            <strong>Arsenal</strong>
+                            @dy4k7
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer role="contentinfo">
+            <p>◆ MMXXV Dhayalan ◆ Forged in Shadow & Code ◆</p>
+        </footer>
+    </div>
+
+    <script>
+        document.querySelectorAll('.skill-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.animation = 'none';
+                setTimeout(() => {
+                    this.style.animation = '';
+                }, 10);
+            });
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
