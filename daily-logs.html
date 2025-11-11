@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Logs | Dhayalan K</title>
+    <link rel="stylesheet" href="shared-styles.css">
+    <style>
+        /* Page-specific styles */
+        .log-list {
+            display: grid;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .log-card {
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            padding: 35px;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .log-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, #8b5cf6, #a78bfa);
+            transition: height 0.4s ease;
+        }
+
+        .log-card:hover {
+            background: rgba(25, 25, 25, 0.8);
+            border-color: #8b5cf6;
+            transform: translateX(15px);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .log-card:hover::before {
+            height: 100%;
+        }
+
+        .log-date {
+            font-family: 'Playfair Display', serif;
+            color: #ffffff;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .log-summary {
+            color: #a78bfa;
+            font-size: 1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .log-meta {
+            display: flex;
+            gap: 25px;
+            color: #8b5cf6;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .log-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-section {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(20, 20, 20, 0.5);
+            border-radius: 16px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            color: #a78bfa;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #8b5cf6;
+            color: #ffffff;
+            border-color: #8b5cf6;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 12px 20px;
+            background: rgba(10, 10, 10, 0.5);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-family: 'Space Grotesk', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.2);
+        }
+
+        .month-divider {
+            font-family: 'Playfair Display', serif;
+            color: #8b5cf6;
+            font-size: 2em;
+            font-weight: 700;
+            margin: 50px 0 30px 0;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <nav>
+        <div class="nav-content">
+            <a href="index.html" class="logo">DK</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="daily-logs.html" class="active">Daily Logs</a></li>
+                <li><a href="index.html#focus">Skills</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h1>Daily Logs</h1>
+            <p>My journey towards mastering Cloud Security</p>
+        </div>
+
+        <div class="content-section">
+            <div class="filter-section">
+                <input type="text" class="search-box" placeholder="Search logs...">
+                <button class="filter-btn active">All</button>
+                <button class="filter-btn">Linux</button>
+                <button class="filter-btn">Python</button>
+                <button class="filter-btn">C</button>
+                <button class="filter-btn">Cloud</button>
+                <button class="filter-btn">Security</button>
+            </div>
+
+            <div class="month-divider">November 2025</div>
+
+            <div class="log-list">
+                <a href="2025-11-10.html" class="log-card">
+                    <div class="log-date">November 10, 2025</div>
+                    <div class="log-summary">
+                        Deep dive into systemd and service management. Built a Python monitoring script 
+                        and studied AWS IAM best practices.
+                    </div>
+                    <div class="log-meta">
+                        <span>📚 3 Topics</span>
+                        <span>⏱️ 4.5 Hours</span>
+                        <span>🏷️ Linux, Python, Cloud</span>
+                    </div>
+                </a>
+
+                <a href="2025-11-09.html" class="log-card">
+                    <div class="log-date">November 9, 2025</div>
+                    <div class="log-summary">
+                        Practiced bash scripting for automation. Started learning C fundamentals focusing 
+                        on pointers and memory allocation.
+                    </div>
+                    <div class="log-meta">
+                        <span>📚 2 Topics</span>
+                        <span>⏱️ 5 Hours</span>
+                        <span>🏷️ Bash, C, Fundamentals</span>
+                    </div>
+                </a>
+
+                <a href="2025-11-08.html" class="log-card">
+                    <div class="log-date">November 8, 2025</div>
+                    <div class="log-summary">
+                        Explored Linux networking commands. Set up virtual machines for practice environment. 
+                        Learned about TCP/IP fundamentals.
+                    </div>
+                    <div class="log-meta">
+                        <span>📚 3 Topics</span>
+                        <span>⏱️ 4 Hours</span>
+                        <span>🏷️ Linux, Networking, VMs</span>
+                    </div>
+                </a>
+
+                <a href="2025-11-07.html" class="log-card">
+                    <div class="log-date">November 7, 2025</div>
+                    <div class="log-summary">
+                        Python practice with file handling and error management. Created a log analyzer tool 
+                        for parsing system logs.
+                    </div>
+                    <div class="log-meta">
+                        <span>📚 2 Topics</span>
+                        <span>⏱️ 3.5 Hours</span>
+                        <span>🏷️ Python, Scripting, Tools</span>
+                    </div>
+                </a>
+
+                <a href="2025-11-06.html" class="log-card">
+                    <div class="log-date">November 6, 2025</div>
+                    <div class="log-summary">
+                        Studied cloud architecture patterns. Focused on microservices, containers, and 
+                        orchestration fundamentals with Kubernetes basics.
+                    </div>
+                    <div class="log-meta">
+                        <span>📚 4 Topics</span>
+                        <span>⏱️ 6 Hours</span>
+                        <span>🏷️ Cloud, Architecture, Kubernetes</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="daily-logs.html">Daily Logs</a>
+                <a href="index.html#focus">Skills</a>
+                <a href="index.html#contact">Contact</a>
+            </div>
+            <p>© 2025 Dhayalan K · Designed & Developed with Purpose</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Search functionality placeholder
+        const searchBox = document.querySelector('.search-box');
+        searchBox.addEventListener('input', function() {
+            // Add search logic here
+            console.log('Searching for:', this.value);
+        });
+    </script>
+</body>
+</html>
