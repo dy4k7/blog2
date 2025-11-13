@@ -311,13 +311,21 @@
             font-size: 1.05em;
         }
 
+        /* Mobile responsive styles */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 3em;
+            header {
+                padding: 120px 20px 60px;
             }
 
-            .skills-grid {
-                grid-template-columns: 1fr;
+            h1 {
+                font-size: 3em;
+                letter-spacing: -1px;
+            }
+
+            .tagline {
+                font-size: 1.1em;
+                margin-bottom: 30px;
+                padding: 0 10px;
             }
 
             .profile-img {
@@ -326,8 +334,173 @@
                 font-size: 60px;
             }
 
+            .status-badge {
+                width: 16px;
+                height: 16px;
+                bottom: 8px;
+                right: 8px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+                padding: 0 20px;
+                width: 100%;
+            }
+
+            .cta-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .scroll-indicator {
+                bottom: 20px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                margin-top: 40px;
+            }
+
+            .skill-card {
+                padding: 30px;
+            }
+
+            .skill-card h3 {
+                font-size: 1.5em;
+            }
+
+            .skill-card p {
+                font-size: 1em;
+                line-height: 1.7;
+            }
+
+            .skill-icon {
+                font-size: 2.5em;
+                margin-bottom: 20px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-item {
+                padding: 25px;
+                gap: 20px;
+            }
+
+            .contact-icon {
+                font-size: 2em;
+            }
+
+            .contact-item strong {
+                font-size: 0.9em;
+            }
+
+            .contact-item div {
+                font-size: 0.95em;
+                word-break: break-all;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            .content-section {
+                padding: 40px 25px;
+                margin: 40px 0;
+            }
+
+            .content-section h2 {
+                font-size: 2.5em;
+            }
+
+            .content-section p {
+                font-size: 1.05em;
+                line-height: 1.8;
+                margin-top: 30px;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
             header {
-                padding: 140px 20px 80px;
+                padding: 100px 15px 50px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .tagline {
+                font-size: 1em;
+                letter-spacing: 0.5px;
+            }
+
+            .profile-img {
+                width: 120px;
+                height: 120px;
+                font-size: 50px;
+            }
+
+            .cta-buttons .btn {
+                padding: 15px 30px;
+                font-size: 0.95em;
+            }
+
+            .skill-card {
+                padding: 25px;
+            }
+
+            .skill-card h3 {
+                font-size: 1.3em;
+            }
+
+            .skill-card p {
+                font-size: 0.95em;
+            }
+
+            .skill-icon {
+                font-size: 2.2em;
+            }
+
+            .contact-item {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .contact-item:hover {
+                transform: translateX(0);
+                transform: translateY(-5px);
+            }
+
+            .content-section {
+                padding: 30px 20px;
+            }
+
+            .content-section h2 {
+                font-size: 2em;
+            }
+
+            .content-section p {
+                font-size: 1em;
+            }
+
+            .nav-links {
+                gap: 8px;
+            }
+
+            .nav-links a {
+                font-size: 0.75em;
+            }
+
+            .logo {
+                font-size: 1.2em;
             }
         }
     </style>
