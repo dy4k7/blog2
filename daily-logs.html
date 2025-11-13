@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="style.css">
     <style>
         /* Page-specific styles */
+        .page-header {
+            margin-top: 100px; /* Added space to prevent nav overlap */
+            padding-top: 40px;
+        }
+
         .log-list {
             display: grid;
             gap: 25px;
@@ -69,6 +74,7 @@
             color: #8b5cf6;
             font-size: 0.9em;
             font-weight: 500;
+            flex-wrap: wrap;
         }
 
         .log-meta span {
@@ -133,6 +139,107 @@
             margin: 50px 0 30px 0;
             padding-bottom: 15px;
             border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .page-header {
+                margin-top: 80px;
+                padding-top: 20px;
+            }
+
+            .page-header h1 {
+                font-size: 2.5em;
+            }
+
+            .page-header p {
+                font-size: 1.1em;
+            }
+
+            .filter-section {
+                padding: 20px;
+                gap: 10px;
+            }
+
+            .search-box {
+                min-width: 100%;
+                width: 100%;
+            }
+
+            .filter-btn {
+                padding: 8px 18px;
+                font-size: 0.9em;
+            }
+
+            .log-card {
+                padding: 25px;
+            }
+
+            .log-card:hover {
+                transform: translateX(8px);
+            }
+
+            .log-date {
+                font-size: 1.5em;
+            }
+
+            .log-summary {
+                font-size: 0.95em;
+            }
+
+            .log-meta {
+                gap: 15px;
+                font-size: 0.85em;
+            }
+
+            .month-divider {
+                font-size: 1.6em;
+                margin: 30px 0 20px 0;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links a {
+                font-size: 0.85em;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            .page-header h1 {
+                font-size: 2em;
+            }
+
+            .log-date {
+                font-size: 1.3em;
+            }
+
+            .log-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .filter-section {
+                padding: 15px;
+            }
+
+            .nav-links {
+                gap: 10px;
+            }
+
+            .nav-links a {
+                font-size: 0.8em;
+            }
         }
     </style>
 </head>
@@ -255,22 +362,89 @@
     </div>
 
     <script>
-        // Simple filter functionality
         const filterBtns = document.querySelectorAll('.filter-btn');
+        const searchBox = document.querySelector('.search-box');
+        const logCards = document.querySelectorAll('.log-card');
         
+        let currentFilter = 'All';
+        let currentSearch = '';
+
+        // Filter functionality
         filterBtns.forEach(btn => {
             btn.addEventListener('click', function() {
                 filterBtns.forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
+                currentFilter = this.textContent;
+                applyFilters();
             });
         });
 
-        // Search functionality placeholder
-        const searchBox = document.querySelector('.search-box');
+        // Search functionality
         searchBox.addEventListener('input', function() {
-            // Add search logic here
-            console.log('Searching for:', this.value);
+            currentSearch = this.value.toLowerCase();
+            applyFilters();
         });
+
+        // Apply both search and filter
+        function applyFilters() {
+            let visibleCount = 0;
+            
+            logCards.forEach(card => {
+                const summary = card.querySelector('.log-summary').textContent.toLowerCase();
+                const date = card.querySelector('.log-date').textContent.toLowerCase();
+                const tags = card.querySelector('.log-meta').textContent.toLowerCase();
+                const cardText = summary + ' ' + date + ' ' + tags;
+                
+                // Check if card matches search
+                const matchesSearch = currentSearch === '' || cardText.includes(currentSearch);
+                
+                // Check if card matches filter
+                let matchesFilter = true;
+                if (currentFilter !== 'All') {
+                    matchesFilter = tags.toLowerCase().includes(currentFilter.toLowerCase());
+                }
+                
+                // Show or hide card
+                if (matchesSearch && matchesFilter) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Show message if no results
+            showNoResultsMessage(visibleCount);
+        }
+
+        // Show/hide no results message
+        function showNoResultsMessage(count) {
+            let noResultsMsg = document.querySelector('.no-results-message');
+            
+            if (count === 0) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.className = 'no-results-message';
+                    noResultsMsg.style.cssText = `
+                        text-align: center;
+                        padding: 60px 20px;
+                        color: #a78bfa;
+                        font-size: 1.2em;
+                        background: rgba(139, 92, 246, 0.05);
+                        border-radius: 12px;
+                        border: 1px dashed rgba(139, 92, 246, 0.3);
+                        margin-top: 30px;
+                    `;
+                    noResultsMsg.innerHTML = '🔍 No logs found matching your criteria';
+                    document.querySelector('.log-list').appendChild(noResultsMsg);
+                }
+                noResultsMsg.style.display = 'block';
+            } else {
+                if (noResultsMsg) {
+                    noResultsMsg.style.display = 'none';
+                }
+            }
+        }
     </script>
 </body>
 </html>
