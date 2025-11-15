@@ -371,6 +371,18 @@ footer {
     }
 }
 
+.filter-section {
+    position: relative;
+    z-index: 200; /* raise above floating overlays */
+    pointer-events: auto;
+}
+
+.filter-section .search-box {
+    position: relative;
+    z-index: 201;
+    pointer-events: auto;
+}
+
 @media (max-width: 768px) {
     nav {
         padding: 15px 20px;
