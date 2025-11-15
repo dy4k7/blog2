@@ -8,7 +8,7 @@
     <style>
         /* Page-specific styles */
         .page-header {
-            margin-top: 100px; /* Added space to prevent nav overlap */
+            margin-top: 100px;
             padding-top: 40px;
         }
 
@@ -139,6 +139,18 @@
             margin: 50px 0 30px 0;
             padding-bottom: 15px;
             border-bottom: 2px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .no-results-message {
+            text-align: center;
+            padding: 60px 20px;
+            color: #a78bfa;
+            font-size: 1.2em;
+            background: rgba(139, 92, 246, 0.05);
+            border-radius: 12px;
+            border: 1px dashed rgba(139, 92, 246, 0.3);
+            margin-top: 30px;
+            display: none;
         }
 
         /* Mobile responsive styles */
@@ -272,12 +284,6 @@
         <div class="content-section">
             <div class="filter-section">
                 <input type="text" class="search-box" placeholder="Search logs...">
-                <button class="filter-btn active">All</button>
-                <button class="filter-btn">Linux</button>
-                <button class="filter-btn">Python</button>
-                <button class="filter-btn">C</button>
-                <button class="filter-btn">Cloud</button>
-                <button class="filter-btn">Security</button>
             </div>
 
             <div class="month-divider">November 2025</div>
@@ -347,6 +353,10 @@
                         <span>🏷️ Cloud, Architecture, Kubernetes</span>
                     </div>
                 </a>
+
+                <div class="no-results-message">
+                    🔍 No logs found matching your criteria
+                </div>
             </div>
         </div>
 
@@ -362,89 +372,46 @@
     </div>
 
     <script>
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const searchBox = document.querySelector('.search-box');
-        const logCards = document.querySelectorAll('.log-card');
-        
-        let currentFilter = 'All';
-        let currentSearch = '';
-
-        // Filter functionality
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentFilter = this.textContent;
-                applyFilters();
-            });
-        });
-
-        // Search functionality
-        searchBox.addEventListener('input', function() {
-            currentSearch = this.value.toLowerCase();
-            applyFilters();
-        });
-
-        // Apply both search and filter
-        function applyFilters() {
-            let visibleCount = 0;
-            
-            logCards.forEach(card => {
-                const summary = card.querySelector('.log-summary').textContent.toLowerCase();
-                const date = card.querySelector('.log-date').textContent.toLowerCase();
-                const tags = card.querySelector('.log-meta').textContent.toLowerCase();
-                const cardText = summary + ' ' + date + ' ' + tags;
-                
-                // Check if card matches search
-                const matchesSearch = currentSearch === '' || cardText.includes(currentSearch);
-                
-                // Check if card matches filter
-                let matchesFilter = true;
-                if (currentFilter !== 'All') {
-                    matchesFilter = tags.toLowerCase().includes(currentFilter.toLowerCase());
-                }
-                
-                // Show or hide card
-                if (matchesSearch && matchesFilter) {
-                    card.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            // Show message if no results
-            showNoResultsMessage(visibleCount);
-        }
-
-        // Show/hide no results message
-        function showNoResultsMessage(count) {
-            let noResultsMsg = document.querySelector('.no-results-message');
-            
-            if (count === 0) {
-                if (!noResultsMsg) {
-                    noResultsMsg = document.createElement('div');
-                    noResultsMsg.className = 'no-results-message';
-                    noResultsMsg.style.cssText = `
-                        text-align: center;
-                        padding: 60px 20px;
-                        color: #a78bfa;
-                        font-size: 1.2em;
-                        background: rgba(139, 92, 246, 0.05);
-                        border-radius: 12px;
-                        border: 1px dashed rgba(139, 92, 246, 0.3);
-                        margin-top: 30px;
-                    `;
-                    noResultsMsg.innerHTML = '🔍 No logs found matching your criteria';
-                    document.querySelector('.log-list').appendChild(noResultsMsg);
-                }
-                noResultsMsg.style.display = 'block';
-            } else {
-                if (noResultsMsg) {
-                    noResultsMsg.style.display = 'none';
-                }
-            }
-        }
-    </script>
+         const searchBox = document.querySelector('.search-box');
+         const logCards = document.querySelectorAll('.log-card');
+         const noResultsMsg = document.querySelector('.no-results-message');
+         
+         let currentSearch = '';
+ 
+         // Search functionality
+         searchBox.addEventListener('input', function() {
+             currentSearch = this.value.toLowerCase();
+             applyFilters();
+         });
+ 
+         // Apply both search and filter
+         function applyFilters() {
+             let visibleCount = 0;
+             
+             logCards.forEach(card => {
+                 const summary = card.querySelector('.log-summary').textContent.toLowerCase();
+                 const date = card.querySelector('.log-date').textContent.toLowerCase();
+                 const tags = card.querySelector('.log-meta').textContent.toLowerCase();
+                 const cardText = summary + ' ' + date + ' ' + tags;
+                 
+                 // Check if card matches search
+                 const matchesSearch = currentSearch === '' || cardText.includes(currentSearch);
+                 // Show or hide card (no filters)
+                 if (matchesSearch) {
+                     card.style.display = 'block';
+                     visibleCount++;
+                 } else {
+                     card.style.display = 'none';
+                 }
+             });
+ 
+             // Show message if no results
+             if (visibleCount === 0) {
+                 noResultsMsg.style.display = 'block';
+             } else {
+                 noResultsMsg.style.display = 'none';
+             }
+         }
+     </script>
 </body>
 </html>
