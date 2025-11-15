@@ -92,6 +92,17 @@
             background: rgba(20, 20, 20, 0.5);
             border-radius: 16px;
             border: 1px solid rgba(139, 92, 246, 0.2);
+
+            /* ensure this area is above floating overlays on hosted site */
+            position: relative;
+            z-index: 300;
+            pointer-events: auto;
+        }
+
+        .filter-section .search-box {
+            position: relative;
+            z-index: 301;
+            pointer-events: auto;
         }
 
         .filter-btn {
